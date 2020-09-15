@@ -24,6 +24,6 @@ while not crashed:
     # renderImg(dotImg,50,50)
 
     # pygame.display.update() #only update parts of thing
-    # clock.tick(60) this piece of code crashes the thing after three or so seconds :)
+    clock.tick(60)  # 60 tps
 exit()
 
