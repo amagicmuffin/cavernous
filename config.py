@@ -41,7 +41,7 @@ pygame.display.set_caption('Cavernous')
 
 clock = pygame.time.Clock()
 
-mapStartX = 50
+mapStartX = 50#render placeholder map, replace later
 mapStartY = 50
 for i in theMap:
     for j in i:
@@ -50,3 +50,25 @@ for i in theMap:
     mapStartY += 50
     mapStartX = 50
 pygame.display.update()
+
+#player shenanigans
+APos = [1,1]
+renderImg(atImg, 50+APos[0]*50, 50+APos[1]*50) #starting render
+pygame.display.update()
+
+def renderA(xOrY,direction):
+    renderImg(dotImg, 50+APos[0]*50, 50+APos[1]*50)
+    APos[xOrY] += direction
+    renderImg(atImg, 50+APos[0]*50, 50+APos[1]*50)
+    pygame.display.update()
+
+def moveUp():
+    renderA(1,-1)
+def moveLeft():
+    renderA(0,-1)
+def moveDown():
+    renderA(1,1)
+def moveRight():
+    #APos[0] += 1
+    renderA(0,1)
+
