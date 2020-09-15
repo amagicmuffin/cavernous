@@ -8,7 +8,7 @@ while not crashed:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True
-            
+
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 moveUp()
@@ -19,12 +19,11 @@ while not crashed:
             if event.key == pygame.K_d:
                 moveRight()
 
+        # print(event)
 
+    # renderImg(dotImg,50,50)
 
-        #print(event)
-    
-    #renderImg(dotImg,50,50)
-    
-    #pygame.display.update() #only update parts of thing
-    #clock.tick(60) this piece of code crashes the thing after three or so seconds :)
+    # pygame.display.update() #only update parts of thing
+    # clock.tick(60) this piece of code crashes the thing after three or so seconds :)
 exit()
+
