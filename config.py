@@ -52,15 +52,24 @@ for i in theMap:
 pygame.display.update()
 
 #player shenanigans
-APos = [1,1]
-renderImg(atImg, 50+APos[0]*50, 50+APos[1]*50) #starting render
+Apos = [1,1]
+renderImg(atImg, 50+Apos[0]*50, 50+Apos[1]*50) #starting render
 pygame.display.update()
 
 def renderA(xOrY,direction):
-    renderImg(dotImg, 50+APos[0]*50, 50+APos[1]*50)
-    APos[xOrY] += direction
-    renderImg(atImg, 50+APos[0]*50, 50+APos[1]*50)
-    pygame.display.update()
+    #print(theMap[Apos[0]][Apos[1]])
+    xChanged = 0
+    yChanged = 0
+    if xOrY == 0:
+        xChanged = 1
+    else:
+        yChanged = 1
+        # theMap[x][y] is [y][x] because nested arrays are hard
+    if theMap[Apos[1]+ yChanged*direction][Apos[0]+ xChanged*direction] == '.':
+        renderImg(dotImg, 50+Apos[0]*50, 50+Apos[1]*50)
+        Apos[xOrY] += direction
+        renderImg(atImg, 50+Apos[0]*50, 50+Apos[1]*50)
+        pygame.display.update()
 
 def moveUp():
     renderA(1,-1)
@@ -69,6 +78,6 @@ def moveLeft():
 def moveDown():
     renderA(1,1)
 def moveRight():
-    #APos[0] += 1
+    #Apos[0] += 1
     renderA(0,1)
 
