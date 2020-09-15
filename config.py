@@ -29,11 +29,14 @@ iImg = pygame.image.load('pictures/i.png')
 def renderImg(image,x,y):
     gameDisplay.blit(image,(x,y))
 
+imagesDict = {'#':hashtagImg,'@':atImg,'.':dotImg,'!':exclaimImg,
+              '?':questionImg,'<':leftMoveImg,'>':rightMoveImg,'i':iImg}
+
 #colors
 white = (255,255,255)
 black = (0,0,0)
 
-#some pygame stuff
+#stuff to display on init
 pygame.init()
 
 gameDisplay = pygame.display.set_mode((windowsizeX,windowsizeY))
@@ -41,11 +44,12 @@ pygame.display.set_caption('Cavernous')
 
 clock = pygame.time.Clock()
 
-mapStartX = 50#render placeholder map, replace later
+mapStartX = 50#this renders the map somehow
 mapStartY = 50
 for i in theMap:
     for j in i:
-        renderImg(dotImg,mapStartX,mapStartY)
+        for k in range(len(imagesDict)):
+            renderImg(imagesDict[j],mapStartX,mapStartY)
         mapStartX += 50
     mapStartY += 50
     mapStartX = 50
