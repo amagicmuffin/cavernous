@@ -15,14 +15,14 @@ theMap = [
 
 
 # config images
-hashtagImg = pygame.image.load("pictures/#.png")
-atImg = pygame.image.load("pictures/at.png")
-dotImg = pygame.image.load("pictures/dot.png")
-exclaimImg = pygame.image.load("pictures/exclaim.png")
-questionImg = pygame.image.load("pictures/questionMark.png")
-leftMoveImg = pygame.image.load("pictures/leftMove.png")
-rightMoveImg = pygame.image.load("pictures/rightMove.png")
-iImg = pygame.image.load("pictures/i.png")
+hashtagImg = pygame.image.load("images/#.png")
+atImg = pygame.image.load("images/at.png")
+dotImg = pygame.image.load("images/dot.png")
+exclaimImg = pygame.image.load("images/exclaim.png")
+questionImg = pygame.image.load("images/questionMark.png")
+leftMoveImg = pygame.image.load("images/leftMove.png")
+rightMoveImg = pygame.image.load("images/rightMove.png")
+iImg = pygame.image.load("images/i.png")
 
 
 def renderImg(image, x, y):
