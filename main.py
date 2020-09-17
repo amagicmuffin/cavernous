@@ -35,9 +35,11 @@ clock = pygame.time.Clock()
 # render startscreen
 
 # x,y = middle of window - half of image's size
-renderImg(startImg,int(windowsizeX/2 -50),int(windowsizeY/2 - 20))
+renderImg(startImg, int(windowsizeX / 2 - 50), int(windowsizeY / 2 - 20))
 
 blink = 1  # 1 = on, -1 = off
+
+
 def startSelectBlink(blink):
     if blink == 1:
         rightImg = rightMoveImg
@@ -46,12 +48,14 @@ def startSelectBlink(blink):
         rightImg = nullImg
         leftImg = nullImg
     # x = middle of window - half of images size, then move to left 100
-    renderImg(leftImg,int(windowsizeX/2 - 25 - 100),int(windowsizeY/2 - 25))
+    renderImg(leftImg, int(windowsizeX / 2 - 25 - 100), int(windowsizeY / 2 - 25))
     # x = middle of window - half of images size, then move to right 100
-    renderImg(rightImg,int(windowsizeX/2 - 25 + 100),int(windowsizeY/2 - 25))
+    renderImg(rightImg, int(windowsizeX / 2 - 25 + 100), int(windowsizeY / 2 - 25))
+
+
 # pygame.display.update()
 
-pygame.time.set_timer(pygame.USEREVENT+1, 1000)
+pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
 
 crashed = False
 # startscreen game loop
@@ -62,7 +66,7 @@ while not crashed:
             crashed = True
             exit()
 
-        if event.type == pygame.USEREVENT+1:
+        if event.type == pygame.USEREVENT + 1:
             blink *= -1
 
         elif event.type == pygame.KEYDOWN:
@@ -70,10 +74,10 @@ while not crashed:
 
     startSelectBlink(blink)
 
-    pygame.display.update() #only update parts of thing
+    pygame.display.update()  # only update parts of thing
     clock.tick(60)  # 60 tps
 
-print('yes')
+print("yes")
 # here down to the end of the for loop: render map on game start
 theMap = [
     ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
