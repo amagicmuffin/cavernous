@@ -25,11 +25,11 @@ black = (0, 0, 0)
 pygame.init()
 
 windowsizeX = 700  # set pyGame window size vars
-windowsizeY = 400  # ^
+windowsizeY = 800  # ^
 
-gameDisplay = pygame.display.set_mode(
+gameDisplay = pygame.display.set_mode(  # set pyGame window size
     (windowsizeX, windowsizeY)
-)  # set pyGame window size
+)
 pygame.display.set_caption("Cavernous")  # set pyGame caption (topleft)
 
 clock = pygame.time.Clock()
@@ -65,6 +65,8 @@ crashed = False
 # startscreen game loop
 while not crashed:
 
+    startSelectBlink(blink)  # every tick, check if you need to turn arrows off/on
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True
@@ -74,9 +76,8 @@ while not crashed:
             blink *= -1  # , change sign of blink var. helps the startSelectBlink() func
 
         elif event.type == pygame.KEYDOWN:  # if any key pressed,
+            gameDisplay.fill(black)
             crashed = True  # exit this game loop and go to the next one
-
-    startSelectBlink(blink)  # every tick, check if you need to turn arrows off/on
 
     pygame.display.update()  # update whole screen
     clock.tick(60)  # 60 tps
