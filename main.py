@@ -1,6 +1,5 @@
 import pygame
 
-# test
 # load images
 hashtagImg = pygame.image.load("images/#.png")
 atImg = pygame.image.load("images/at.png")
@@ -25,11 +24,13 @@ black = (0, 0, 0)
 # run on startup
 pygame.init()
 
-windowsizeX = 700
-windowsizeY = 400
+windowsizeX = 700  # set pyGame window size vars
+windowsizeY = 400  # ^
 
-gameDisplay = pygame.display.set_mode((windowsizeX, windowsizeY))
-pygame.display.set_caption("Cavernous")
+gameDisplay = pygame.display.set_mode(
+    (windowsizeX, windowsizeY)
+)  # set pyGame window size
+pygame.display.set_caption("Cavernous")  # set pyGame caption (topleft)
 
 clock = pygame.time.Clock()
 
@@ -41,11 +42,11 @@ renderImg(startImg, int(windowsizeX / 2 - 50), int(windowsizeY / 2 - 20))
 blink = 1  # 1 = on, -1 = off
 
 
-def startSelectBlink(blink):
-    if blink == 1:
+def startSelectBlink(blink):  # startscreen arrow blink effect
+    if blink == 1:  # show the arrows
         rightImg = rightMoveImg
         leftImg = leftMoveImg
-    else:
+    else:  # , show nothing
         rightImg = nullImg
         leftImg = nullImg
     # x = middle of window - half of images size, then move to left 100
@@ -56,7 +57,9 @@ def startSelectBlink(blink):
 
 # pygame.display.update()
 
-pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
+pygame.time.set_timer(
+    pygame.USEREVENT + 1, 1000
+)  # set a timer event to go off every 1000 ms (1 second)
 
 crashed = False
 # startscreen game loop
@@ -67,18 +70,17 @@ while not crashed:
             crashed = True
             exit()
 
-        if event.type == pygame.USEREVENT + 1:
-            blink *= -1
+        if event.type == pygame.USEREVENT + 1:  # every second
+            blink *= -1  # , change sign of blink var. helps the startSelectBlink() func
 
-        elif event.type == pygame.KEYDOWN:
-            crashed = True
+        elif event.type == pygame.KEYDOWN:  # if any key pressed,
+            crashed = True  # exit this game loop and go to the next one
 
-    startSelectBlink(blink)
+    startSelectBlink(blink)  # every tick, check if you need to turn arrows off/on
 
-    pygame.display.update()  # only update parts of thing
+    pygame.display.update()  # update whole screen
     clock.tick(60)  # 60 tps
 
-print("yes")
 # here down to the end of the for loop: render map on game start
 theMap = [
     ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
@@ -100,36 +102,37 @@ imagesDict = {
     "i": iImg,
 }
 
-mapStartX = 50
-mapStartY = 50
+renderTileX = 50
+renderTileY = 50
 for i in theMap:
     for j in i:
         for k in range(len(imagesDict)):
-            renderImg(imagesDict[j], mapStartX, mapStartY)
-        mapStartX += 50
-    mapStartY += 50
-    mapStartX = 50
+            renderImg(
+                imagesDict[j], renderTileX, renderTileY
+            )  # render correct image from theMap at x,y
+        renderTileX += 50  # move over by 50
+    renderTileY += 50  # go down by 50 and
+    renderTileX = 50  # start again from left
 pygame.display.update()
 
 # player shenanigans
-Apos = [1, 1]
-renderImg(atImg, 50 + Apos[0] * 50, 50 + Apos[1] * 50)  # starting render
+Apos = [1, 1]  # set starting position of player
+renderImg(atImg, 50 + Apos[0] * 50, 50 + Apos[1] * 50)  # starting render of player
 pygame.display.update()
 
 
 def renderA(xOrY, direction):
-    # print(theMap[Apos[0]][Apos[1]])
     xChanged = 0
     yChanged = 0
     if xOrY == 0:
-        xChanged = 1
+        xChanged = 1  # we're changing the xPos
     else:
-        yChanged = 1
+        yChanged = 1  # we're changing the yPos
         # theMap[x][y] is [y][x] because nested arrays are hard
     if theMap[Apos[1] + yChanged * direction][Apos[0] + xChanged * direction] == ".":
-        renderImg(dotImg, 50 + Apos[0] * 50, 50 + Apos[1] * 50)
-        Apos[xOrY] += direction
-        renderImg(atImg, 50 + Apos[0] * 50, 50 + Apos[1] * 50)
+        renderImg(dotImg, 50 + Apos[0] * 50, 50 + Apos[1] * 50)  # "cover up" original @
+        Apos[xOrY] += direction  # change Apos
+        renderImg(atImg, 50 + Apos[0] * 50, 50 + Apos[1] * 50)  # render new @
         pygame.display.update()
 
 
@@ -146,7 +149,6 @@ def moveDown():
 
 
 def moveRight():
-    # Apos[0] += 1
     renderA(0, 1)
 
 
@@ -169,9 +171,4 @@ while not crashed:
             if event.key == pygame.K_d:
                 moveRight()
 
-        # print(event)
-
-    # renderImg(dotImg,50,50)
-
-    # pygame.display.update() #only update parts of thing
     clock.tick(60)  # 60 tps
