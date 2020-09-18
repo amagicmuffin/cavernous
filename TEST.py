@@ -1,5 +1,7 @@
 # figuring out how inspectables might work
 # in main, make a function like text('') to put text under the map
+# from there, i should be able to implement this inspectables thing.
+
 from time import sleep
 
 class inspectable:

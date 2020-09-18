@@ -1,5 +1,9 @@
 import pygame
 
+# colors
+white = (255, 255, 255)
+black = (0, 0, 0)
+
 # load images
 hashtagImg = pygame.image.load("images/#.png")
 atImg = pygame.image.load("images/at.png")
@@ -17,9 +21,20 @@ def renderImg(image, x, y):
     gameDisplay.blit(image, (x, y))
 
 
-# colors
-white = (255, 255, 255)
-black = (0, 0, 0)
+# load text
+pygame.font.init()
+comicSansFont = pygame.font.Font(
+    "fonts/COMIC.TTF", 15
+)  # font size 15, maybe make variable?
+
+
+def renderText(text, x, y):
+    text = comicSansFont.render(text, True, white, black)
+    textRect = text.get_rect()
+    textRect.topleft = (x, y)
+    gameDisplay.blit(text, textRect)
+    pygame.display.update()
+
 
 # run on startup
 pygame.init()
