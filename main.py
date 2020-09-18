@@ -28,13 +28,19 @@ comicSansFont = pygame.font.Font(
 )  # font size 15, maybe make variable?
 
 
-def renderText(text, x, y):
+def putTextHere(text, x, y):  # put text somewhere; specify x and y for topleft corner
     text = comicSansFont.render(text, True, white, black)
     textRect = text.get_rect()
     textRect.topleft = (x, y)
     gameDisplay.blit(text, textRect)
     pygame.display.update()
 
+def printText(text):  # put text under the map.
+    text = comicSansFont.render(text, True, white, black)
+    textRect = text.get_rect()
+    textRect.topleft = (400,0)
+    gameDisplay.blit(text, textRect)
+    pygame.display.update()
 
 # run on startup
 pygame.init()
