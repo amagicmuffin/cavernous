@@ -30,7 +30,7 @@ comicSansFont = pygame.font.Font(
 )  # font size 15, maybe make variable?
 
 
-def putTextHere(text, x, y):  # put text somewhere; specify x and y for topleft corner
+def putTextTopLeft(text, x, y):  # put text somewhere; specify x and y for topleft corner
     text = comicSansFont.render(text, True, white, black)
     textRect = text.get_rect()
     textRect.topleft = (x, y)
