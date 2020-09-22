@@ -35,12 +35,14 @@ def putTextHere(text, x, y):  # put text somewhere; specify x and y for topleft 
     gameDisplay.blit(text, textRect)
     pygame.display.update()
 
+
 def printText(text):  # put text under the map.
     text = comicSansFont.render(text, True, white, black)
     textRect = text.get_rect()
-    textRect.topleft = (400,0)
+    textRect.topleft = (400, 0)
     gameDisplay.blit(text, textRect)
     pygame.display.update()
+
 
 # run on startup
 pygame.init()

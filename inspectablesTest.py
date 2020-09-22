@@ -4,6 +4,7 @@
 
 from time import sleep
 
+
 class inspectable:
     def __init__(self, name, desc):
         self.name = name
@@ -17,11 +18,13 @@ class npc(inspectable):
     def __init__(self, name, desc, dialouge):
         super().__init__(name, desc)
         self.dialouge = dialouge
+
     def interact(self):
         print(self.desc)  # what they say
         sleep(0.5)
-        print('\n')
+        print("\n")
         print(self.dialouge)  # what you say
+
 
 hashtagImg = inspectable("#", "A wall")
 atImg = inspectable("@", "Yourself. How did you get to see this?")
@@ -32,7 +35,7 @@ leftMoveImg = 6
 rightMoveImg = 7
 iImg = 8
 startImg = 9
-aImg =  npc("A","Hey there!","Hey to you too!")
+aImg = npc("A", "Hey there!", "Hey to you too!")
 inspectablesDict = {
     "#": hashtagImg,
     "@": atImg,
@@ -42,7 +45,7 @@ inspectablesDict = {
     "<": leftMoveImg,
     ">": rightMoveImg,
     "i": iImg,
-    "A": aImg
+    "A": aImg,
 }
 
 

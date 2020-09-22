@@ -1,4 +1,5 @@
 import pygame
+
 # imported string below
 
 # colors
@@ -36,6 +37,7 @@ def putTextHere(text, x, y):  # put text somewhere; specify x and y for topleft 
     gameDisplay.blit(text, textRect)
     pygame.display.update()
 
+
 def putTextCenter(text, x, y):  # put text somewhere; specify x and y for topleft corner
     text = comicSansFont.render(text, True, white, black)
     textRect = text.get_rect()
@@ -43,12 +45,14 @@ def putTextCenter(text, x, y):  # put text somewhere; specify x and y for toplef
     gameDisplay.blit(text, textRect)
     pygame.display.update()
 
+
 def printText(text):  # put text under the map.
     text = comicSansFont.render(text, True, white, black)
     textRect = text.get_rect()
-    textRect.topleft = (400,0)
+    textRect.topleft = (400, 0)
     gameDisplay.blit(text, textRect)
     pygame.display.update()
+
 
 # run on startup
 pygame.init()
@@ -64,11 +68,14 @@ pygame.display.set_caption("Cavernous")  # set pyGame caption (topleft)
 clock = pygame.time.Clock()
 
 name = ""
+
+
 def updateName(text):
     global name
     gameDisplay.fill(black)
     name += text
-    putTextCenter(name,windowsizeX/2,windowsizeY/2)
+    putTextCenter(name, windowsizeX / 2, windowsizeY / 2)
+
 
 import string
 
