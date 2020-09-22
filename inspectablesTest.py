@@ -47,5 +47,5 @@ inspectablesDict = {
 
 
 # print(imagesDict["#"])
-inspectablesDict["#"].interact()
+# inspectablesDict["#"].interact()
 inspectablesDict["A"].interact()
