@@ -4,3 +4,4 @@
 
 Dude idk.
 Me make video game. Pygame go brr.
+Run the game from main.py, the two test files are only for testing.
